@@ -1,27 +1,42 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginData, LoginFormData } from './auth.model';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environment';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
+  generateId() {
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let id = '';
+    for (let i = 0; i < 20; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      id += characters[randomIndex];
+    }
+    return id;
+  }
+
   isUserLoggedin(): boolean {
-    // const jwtToken = localStorage.getItem('token');
-    const jwtToken = '';
+    const jwtToken = localStorage.getItem('token');
     return jwtToken ? true : false;
   }
 
   login(userData: LoginFormData): Observable<LoginData> {
-    return this.http.post<LoginData>(`${this.apiUrl}/auth/local`, userData);
+    return this.http.post<any>('/api/amazon/Login', userData).pipe(
+      map((response: any) => {
+        if (response && response.result === false) {
+          throw new Error(response.message || 'Unknown error occurred');
+        }
+        return response as LoginData;
+      })
+    );
   }
 
   register(userData: any) {
-    return this.http.post(`${this.apiUrl}/auth/local/register`, userData);
+    return this.http.post(`/auth/local/register`, userData);
   }
 }

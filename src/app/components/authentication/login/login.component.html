@@ -1,27 +1,34 @@
 <div class="login-wrapper">
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" autocomplete="off">
     <div class="card login-card">
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="mobileId" class="form-label">Mobile Number</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          formControlName="identifier"
+          id="mobileId"
+          aria-describedby="mobile number as user name"
+          formControlName="UserName"
         />
       </div>
       <div class="mb-4">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <label for="passwordId" class="form-label">Password</label>
         <input
           type="password"
           class="form-control"
-          id="exampleInputPassword1"
-          formControlName="password"
+          id="passwordId"
+          formControlName="UserPassword"
         />
       </div>
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-        Submit
+      <button
+        type="submit"
+        class="btn btn-primary d-flex justify-content-center align-items-center gap-3"
+        [disabled]="isLoading"
+        (click)="onSubmit()"
+      >
+        @if(!isLoading) { Submit } @else { Loading...
+        <i class="fi fi-rr-spinner rotating"></i>
+        }
       </button>
     </div>
   </form>

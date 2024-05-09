@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'https://freeapi.miniprojectideas.com/api/',
+  // apiUrl: 'http://localhost:4200',
+  // https://freeapi.miniprojectideas.com',
 };

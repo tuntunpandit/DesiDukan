@@ -27,8 +27,8 @@ export class SignupComponent {
 
   initializeForm() {
     this.registerForm = this.fb.group({
-      identifier: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      UserName: ['', [Validators.required]],
+      UserPassword: ['', [Validators.required]],
     });
   }
 
@@ -38,8 +38,8 @@ export class SignupComponent {
     }
 
     this.authService.register(this.registerForm.value).subscribe({
-      next: (data: any) => {
-        if (data) {
+      next: (result: any) => {
+        if (result && result.data) {
           this.router.navigate(['/login']);
         }
       },
