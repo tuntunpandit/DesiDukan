@@ -2,13 +2,23 @@
   <form [formGroup]="registerForm">
     <div class="card login-card">
       <div class="mb-3">
+        <label for="userId" class="form-label">User Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userId"
+          aria-describedby="user name"
+          formControlName="Name"
+        />
+      </div>
+      <div class="mb-3">
         <label for="mobileId" class="form-label">Mobile Number</label>
         <input
           type="text"
           class="form-control"
           id="mobileId"
-          aria-describedby="mobile number as username"
-          formControlName="UserName"
+          aria-describedby="Mobile Number"
+          formControlName="MobileNo"
         />
       </div>
       <div class="mb-4">
@@ -17,12 +27,20 @@
           type="password"
           class="form-control"
           id="passwordId"
-          formControlName="UserPassword"
+          formControlName="Password"
         />
       </div>
-      <button type="submit" class="btn btn-primary" (click)="onSubmit()">
-        Submit
+      <button
+        type="submit"
+        class="btn btn-primary d-flex justify-content-center align-items-center gap-3"
+        [disabled]="isLoading"
+        (click)="onSubmit()"
+      >
+        @if(!isLoading) { Submit } @else { Loading...
+        <i class="fi fi-rr-spinner rotating"></i>
+        }
       </button>
+      <a class="text-center" routerLink="/login">login</a>
     </div>
   </form>
 </div>
