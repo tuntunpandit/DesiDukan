@@ -28,7 +28,7 @@ export interface LoginFormData {
 }
 
 export interface RegisterFormData {
-  CustId: string;
+  CustId: number;
   Name: string;
   MobileNo: number;
   Password: string;

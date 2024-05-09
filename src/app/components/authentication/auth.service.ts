@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginData, LoginFormData } from './auth.model';
+import { LoginData, LoginFormData, RegisterFormData } from './auth.model';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
 
 @Injectable({
@@ -36,7 +36,7 @@ export class AuthService {
     );
   }
 
-  register(userData: any) {
-    return this.http.post(`/auth/local/register`, userData);
+  register(userData: RegisterFormData) {
+    return this.http.post(`/api/amazon/RegisterCustomer`, userData);
   }
 }

@@ -6,12 +6,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { RegisterFormData } from '../auth.model';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
 })
@@ -20,6 +21,7 @@ export class SignupComponent {
   authService = inject(AuthService);
   fb = inject(FormBuilder);
   router = inject(Router);
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.initializeForm();
@@ -27,8 +29,9 @@ export class SignupComponent {
 
   initializeForm() {
     this.registerForm = this.fb.group({
-      UserName: ['', [Validators.required]],
-      UserPassword: ['', [Validators.required]],
+      Name: ['', [Validators.required]],
+      MobileNo: ['', [Validators.required]],
+      Password: ['', [Validators.required]],
     });
   }
 
@@ -36,14 +39,23 @@ export class SignupComponent {
     if (this.registerForm.invalid) {
       return;
     }
-
-    this.authService.register(this.registerForm.value).subscribe({
-      next: (result: any) => {
-        if (result && result.data) {
+    this.isLoading = true;
+    const { Name, MobileNo, Password } = this.registerForm.value;
+    const data: RegisterFormData = {
+      CustId: 0,
+      Name,
+      MobileNo,
+      Password,
+    };
+    this.authService.register(data).subscribe({
+      next: (data: any) => {
+        if (data && data.result) {
+          this.isLoading = false;
           this.router.navigate(['/login']);
         }
       },
       error: (err: any) => {
+        this.isLoading = false;
         console.error(err.message);
       },
     });
