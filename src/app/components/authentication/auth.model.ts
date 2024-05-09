@@ -1,6 +1,14 @@
 export interface LoginData {
-  jwt: string;
-  user: User;
+  message: string;
+  result: boolean;
+  data: Data;
+}
+
+export interface Data {
+  custId: number;
+  name: string;
+  mobileNo: string;
+  password: string;
 }
 
 export interface User {
@@ -15,8 +23,8 @@ export interface User {
 }
 
 export interface LoginFormData {
-  identifier: string;
-  password: string;
+  UserName: string;
+  UserPassword: string;
 }
 
 export interface RegisterFormData {

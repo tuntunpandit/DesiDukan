@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   authService = inject(AuthService);
   fb = inject(FormBuilder);
   router = inject(Router);
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.initializeForm();
@@ -28,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   initializeForm() {
     this.loginForm = this.fb.group({
-      identifier: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      UserName: ['', [Validators.required]],
+      UserPassword: ['', [Validators.required]],
     });
   }
 
@@ -37,16 +38,19 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe({
       next: (data: LoginData) => {
-        if (data && data.jwt) {
-          localStorage.setItem('token', data.jwt);
-          localStorage.setItem('userInfo', JSON.stringify(data.user));
+        if (data && data.data) {
+          const jwt = this.authService.generateId();
+          localStorage.setItem('token', jwt);
+          localStorage.setItem('userInfo', JSON.stringify(data.data));
+          this.isLoading = false;
           this.router.navigate(['/']);
         }
       },
       error: (err: any) => {
+        this.isLoading = false;
         console.error(err.message);
       },
     });
