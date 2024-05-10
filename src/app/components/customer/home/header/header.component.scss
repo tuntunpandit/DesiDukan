@@ -38,3 +38,29 @@
     gap: 20px;
   }
 }
+
+.user-popup {
+  position: absolute;
+  right: 20px;
+  background: black;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  top: 50px;
+  z-index: 999;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

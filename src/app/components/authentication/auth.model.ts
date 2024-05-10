@@ -9,6 +9,7 @@ export interface Data {
   name: string;
   mobileNo: string;
   password: string;
+  role?: string;
 }
 
 export interface User {

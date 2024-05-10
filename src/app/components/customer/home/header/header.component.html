@@ -16,7 +16,16 @@
     </div>
     <div class="user-section">
       <i class="fi fi-rs-shopping-cart"></i>
-      <i class="fi fi-rs-circle-user"></i>
+      <i class="fi fi-rs-circle-user" (click)="openUserPopup()"></i>
     </div>
   </div>
 </div>
+
+@if (isUserPopup) {
+<div class="user-popup">
+  <ul>
+    <li><i class="fi fi-rr-user-gear"></i> Profile</li>
+    <li (click)="logout()"><i class="fi fi-rs-sign-out-alt"></i> Logout</li>
+  </ul>
+</div>
+}

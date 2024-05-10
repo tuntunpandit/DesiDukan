@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
+import { AuthService } from '../../../authentication/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,15 @@ import { SearchComponent } from '../search/search.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  isUserPopup: boolean = false;
+  authService = inject(AuthService);
+
+  openUserPopup() {
+    this.isUserPopup = !this.isUserPopup;
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+}
