@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
-import { LayoutComponent } from './layout/layout.component';
+import { WrapperComponent } from './wrapper/wrapper.component';
 import { HomeComponent } from './home/home.component';
 
 export const CUSTOMER_ROUTES: Routes = [
@@ -9,7 +9,7 @@ export const CUSTOMER_ROUTES: Routes = [
     children: [
       {
         path: '',
-        component: LayoutComponent,
+        component: WrapperComponent,
         children: [
           {
             path: '',
