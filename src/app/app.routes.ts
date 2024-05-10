@@ -3,6 +3,7 @@ import { LoginComponent } from './components/authentication/login/login.componen
 import { SignupComponent } from './components/authentication/signup/signup.component';
 import { authGuard } from './guards/auth.guard';
 import { homeGuard } from './guards/home.guard';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
   {
@@ -40,16 +41,17 @@ export const routes: Routes = [
     canActivate: [homeGuard],
     children: [
       {
+        path: 'admin',
+        canActivate: [adminGuard],
+        loadChildren: () =>
+          import('./components/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
+      },
+      {
         path: '',
         loadChildren: () =>
           import('./components/customer/customer.routes').then(
             (m) => m.CUSTOMER_ROUTES
           ),
-      },
-      {
-        path: 'admin',
-        loadChildren: () =>
-          import('./components/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
       },
       {
         path: '**',

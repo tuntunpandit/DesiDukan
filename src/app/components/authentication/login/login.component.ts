@@ -44,9 +44,18 @@ export class LoginComponent implements OnInit {
         if (data && data.data) {
           const jwt = this.authService.generateId();
           localStorage.setItem('token', jwt);
+          if (this.loginForm.value.UserName === '9111111111') {
+            data.data.role = 'Admin';
+          } else {
+            data.data.role = 'User';
+          }
           localStorage.setItem('userInfo', JSON.stringify(data.data));
           this.isLoading = false;
-          this.router.navigate(['/']);
+          if (data.data.role === 'Admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/']);
+          }
         }
       },
       error: (err: any) => {
