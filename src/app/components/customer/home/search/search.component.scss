@@ -1,0 +1,18 @@
+.searc-box-wrapper {
+  width: 100%;
+  display: block;
+  position: relative;
+  .fi-rr-search {
+    position: absolute;
+    margin-left: 12px;
+    margin-top: 6px;
+    color: gray;
+  }
+  input[type="text"] {
+    padding: 5px 10px 5px 40px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    min-width: 300px;
+    font-size: 14px;
+  }
+}
