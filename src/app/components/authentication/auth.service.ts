@@ -12,20 +12,14 @@ export class AuthService {
   baseUrl: string = environment.apiUrl;
   constructor(private http: HttpClient, private router: Router) {}
 
-  generateId() {
-    const characters =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let id = '';
-    for (let i = 0; i < 30; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
-      id += characters[randomIndex];
-    }
-    return id;
-  }
-
   isUserLoggedin(): boolean {
     const jwtToken = localStorage.getItem('token');
     return jwtToken ? true : false;
+  }
+
+  getJwtToken() {
+    const token = localStorage.getItem('token');
+    return token ? token : '';
   }
 
   getUserInfo() {

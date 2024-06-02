@@ -13,14 +13,17 @@ export interface Data {
 }
 
 export interface User {
-  id: number;
-  username: string;
+  _id: string;
+  fullname: string;
   email: string;
-  provider: string;
-  confirmed: boolean;
-  blocked: boolean;
+  password: string;
+  orders: any[];
+  wishLists: any[];
+  isAdmin: boolean;
+  hasShippingAddress: boolean;
   createdAt: string;
   updatedAt: string;
+  __v: number;
 }
 
 export interface LoginFormData {
