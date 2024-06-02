@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { LoginData, LoginFormData, RegisterFormData } from './auth.model';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../../environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  baseUrl: string = environment.apiUrl;
   constructor(private http: HttpClient, private router: Router) {}
 
   generateId() {
@@ -34,19 +36,12 @@ export class AuthService {
     return null;
   }
 
-  login(userData: LoginFormData): Observable<LoginData> {
-    return this.http.post<any>('/api/amazon/Login', userData).pipe(
-      map((response: any) => {
-        if (response && response.result === false) {
-          throw new Error(response.message || 'Unknown error occurred');
-        }
-        return response as LoginData;
-      })
-    );
+  login(userData: LoginFormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/users/login`, userData);
   }
 
   register(userData: RegisterFormData) {
-    return this.http.post(`/api/amazon/RegisterCustomer`, userData);
+    return this.http.post(`${this.baseUrl}/users/register`, userData);
   }
 
   logout() {

@@ -24,13 +24,12 @@ export interface User {
 }
 
 export interface LoginFormData {
-  UserName: string;
-  UserPassword: string;
+  email: string;
+  password: string;
 }
 
 export interface RegisterFormData {
-  CustId: number;
-  Name: string;
-  MobileNo: number;
-  Password: string;
+  fullname: string;
+  email: string;
+  password: string;
 }
