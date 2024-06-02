@@ -1,5 +1,5 @@
 <div class="nav">
-  <div class="logo">
+  <div class="logo" [routerLink]="'/'">
     <h2><span class="logo-1">Desi</span>Dukan</h2>
   </div>
   <div class="quick-links">
@@ -24,7 +24,7 @@
 @if (isUserPopup) {
 <div class="user-popup">
   <ul>
-    <li><i class="fi fi-rr-user-gear"></i> Profile</li>
+    <li [routerLink]="'profile'"><i class="fi fi-rr-user-gear"></i> Profile</li>
     <li (click)="logout()"><i class="fi fi-rs-sign-out-alt"></i> Logout</li>
   </ul>
 </div>

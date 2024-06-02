@@ -16,6 +16,10 @@ export const CUSTOMER_ROUTES: Routes = [
             component: HomeComponent,
           },
           {
+            path: 'profile',
+            component: ProfileComponent,
+          },
+          {
             path: '**',
             redirectTo: '',
             pathMatch: 'full',
@@ -24,10 +28,7 @@ export const CUSTOMER_ROUTES: Routes = [
       },
     ],
   },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-  },
+
   {
     path: '**',
     redirectTo: '',

@@ -1,1 +1,10 @@
-<p>profile works!</p>
+<div class="container">
+  @if (user) {
+  <div class="profile-wrapper mt-5">
+    <p>Email : {{ user.email }}</p>
+    <p>Full Name : {{ user.fullname }}</p>
+    <p>Created At : {{ user.createdAt }}</p>
+    <p>Admin : {{ user.isAdmin }}</p>
+  </div>
+  }
+</div>
