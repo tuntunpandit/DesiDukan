@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   initializeForm() {
     this.loginForm = this.fb.group({
-      UserName: ['', [Validators.required]],
-      UserPassword: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -40,18 +40,13 @@ export class LoginComponent implements OnInit {
     }
     this.isLoading = true;
     this.authService.login(this.loginForm.value).subscribe({
-      next: (data: LoginData) => {
-        if (data && data.data) {
-          const jwt = this.authService.generateId();
-          localStorage.setItem('token', jwt);
-          if (this.loginForm.value.UserName === '9111111111') {
-            data.data.role = 'Admin';
-          } else {
-            data.data.role = 'User';
-          }
-          localStorage.setItem('userInfo', JSON.stringify(data.data));
+      next: (data: any) => {
+        console.log('data', data);
+        if (data) {
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('userInfo', JSON.stringify(data.userFound));
           this.isLoading = false;
-          if (data.data.role === 'Admin') {
+          if (data.userFound.isAdmin) {
             this.router.navigate(['/admin']);
           } else {
             this.router.navigate(['/']);
