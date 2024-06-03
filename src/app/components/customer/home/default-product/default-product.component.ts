@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../../../../models/Product';
 import { CurrencyPipe, SlicePipe } from '@angular/common';
+import { Product } from '../../../../models/product';
 
 @Component({
   selector: 'app-default-product',

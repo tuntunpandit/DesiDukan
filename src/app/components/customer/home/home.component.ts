@@ -7,7 +7,7 @@ import { CustomerReviewComponent } from './customer-review/customer-review.compo
 import { CategoryComponent } from './category/category.component';
 import { CustomerService } from '../customer.service';
 import { Category } from '../../../models/category';
-import { Product } from '../../../models/Product';
+import { Product } from '../../../models/product';
 
 @Component({
   selector: 'app-home',
