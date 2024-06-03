@@ -16,4 +16,12 @@ export class CustomerService {
   getUserData() {
     return this.http.get(`${this.apiUrl}/users/profile`);
   }
+
+  getProductCategories() {
+    return this.http.get(`${this.apiUrl}/categories`);
+  }
+
+  getProducts() {
+    return this.http.get(`${this.apiUrl}/products`);
+  }
 }
