@@ -1,1 +1,17 @@
-<p>default-product works!</p>
+<div class="product-wrapper">
+  <div class="heading">
+    <span>Trending Products</span>
+    <span class="link"><a>Shop the collection →</a></span>
+  </div>
+  <div class="products">
+    @for (product of products | slice: 0: 8; track $index) {
+    <div class="card">
+      <img class="image" [src]="product.images[0]" [alt]="product.name" />
+      <span class="info">{{ product.name }}</span>
+      <span class="info">{{
+        product.price | currency : "USD" : "symbol"
+      }}</span>
+    </div>
+    }
+  </div>
+</div>
