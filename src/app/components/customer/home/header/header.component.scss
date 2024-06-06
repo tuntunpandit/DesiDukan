@@ -6,6 +6,7 @@
   padding: 10px 30px;
   background-color: #ffff;
   .logo {
+    cursor: pointer;
     h2 {
       font-weight: 700;
       margin: 0;
@@ -27,6 +28,11 @@
         font-size: 14px;
         font-weight: 500;
         cursor: pointer;
+        .link {
+          text-decoration: none;
+          color: rgba(0, 0, 0, 0.641);
+          cursor: pointer;
+        }
       }
     }
   }
@@ -39,6 +45,9 @@
   }
 }
 
+.right-section > .user-section > i {
+  cursor: pointer;
+}
 .user-popup {
   position: absolute;
   right: 20px;
@@ -62,5 +71,17 @@
         margin-bottom: 0;
       }
     }
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .quick-links {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .search-box {
+    display: none;
   }
 }

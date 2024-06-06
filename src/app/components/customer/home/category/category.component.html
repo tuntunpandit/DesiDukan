@@ -1,7 +1,9 @@
 <div class="category-wrapper">
   <div class="heading">
     <span>Shop by Category</span>
-    <span class="link"><a>Browse all categories →</a></span>
+    <span class="link" routerLink="'/categories'"
+      ><a>Browse all categories →</a></span
+    >
   </div>
   <div class="categories">
     @for (category of categories | slice: 0: 4; track $index) {
