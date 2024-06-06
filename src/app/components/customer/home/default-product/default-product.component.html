@@ -5,7 +5,7 @@
   </div>
   <div class="products">
     @for (product of products | slice: 0: 8; track $index) {
-    <div class="card">
+    <div class="card" [routerLink]="['/products', product._id]">
       <img class="image" [src]="product.images[0]" [alt]="product.name" />
       <span class="info">{{ product.name }}</span>
       <span class="info">{{
