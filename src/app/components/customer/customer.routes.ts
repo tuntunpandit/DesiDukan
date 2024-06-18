@@ -24,12 +24,12 @@ export const CUSTOMER_ROUTES: Routes = [
             component: AllProdutsComponent,
           },
           {
-            path: 'categories',
-            component: AllCategoriesComponent,
-          },
-          {
             path: 'products/:id',
             component: ProductDetailsComponent,
+          },
+          {
+            path: 'categories',
+            component: AllCategoriesComponent,
           },
           {
             path: 'cart',
