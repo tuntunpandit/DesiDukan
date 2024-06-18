@@ -18,7 +18,7 @@
     "@angular/platform-browser": "^18.0.3",
     "@angular/platform-browser-dynamic": "^18.0.3",
     "@angular/router": "^18.0.3",
-    "@flaticon/flaticon-uicons": "^3.2.1",
+    "@flaticon/flaticon-uicons": "^3.3.1",
     "bootstrap": "^5.3.3",
     "ngx-skeleton-loader": "^9.0.0",
     "rxjs": "~7.8.0",
