@@ -1,6 +1,5 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use "@angular/material" as mat;
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -37,8 +36,8 @@ $DesiDukaan-theme: mat.define-theme(
 // @include mat.color-variants-backwards-compatibility($DesiDukaan-theme);
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import "assets/styles/toastr.scss";
 @import "@flaticon/flaticon-uicons/css/all/all.css";
-
 * {
   padding: 0;
   margin: 0;
