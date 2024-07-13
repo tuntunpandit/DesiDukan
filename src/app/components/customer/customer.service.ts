@@ -24,4 +24,8 @@ export class CustomerService {
   getProducts() {
     return this.http.get(`${this.apiUrl}/products`);
   }
+
+  getProduct(id: string) {
+    return this.http.get(`${this.apiUrl}/products/${id}`);
+  }
 }

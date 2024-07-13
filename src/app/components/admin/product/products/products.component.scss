@@ -1,0 +1,30 @@
+.products {
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 1px;
+    .add-btn {
+      min-width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      .fi-br-add {
+        line-height: 0;
+      }
+    }
+  }
+  .product-card {
+    table {
+      tbody {
+        tr:last-child > td,
+        tr:last-child > th {
+          border: none;
+        }
+      }
+    }
+  }
+}

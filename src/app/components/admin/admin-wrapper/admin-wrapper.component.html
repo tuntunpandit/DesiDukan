@@ -1,6 +1,9 @@
 <div class="admin-wrapper">
   <app-admin-header></app-admin-header>
-  <div class="main-content">
-    <router-outlet></router-outlet>
-  </div>
+  <app-admin-sidebar></app-admin-sidebar>
+  <main>
+    <div id="main-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 </div>
