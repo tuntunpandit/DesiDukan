@@ -18,6 +18,10 @@ export class HeaderComponent {
     this.isUserPopup = !this.isUserPopup;
   }
 
+  closeUserPopup() {
+    this.isUserPopup = false;
+  }
+
   logout() {
     this.authService.logout();
   }

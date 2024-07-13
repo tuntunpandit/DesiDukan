@@ -23,24 +23,38 @@ export class AuthService {
   }
 
   getUserInfo() {
-    const user = localStorage.getItem('userInfo');
+    const user = localStorage.getItem('user');
     if (user) {
       return JSON.parse(user);
     }
     return null;
   }
 
-  login(userData: LoginFormData): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/users/login`, userData);
+  login(userData: LoginFormData) {
+    return this.http.post<LoginFormData>(
+      `${this.baseUrl}/users/login`,
+      userData
+    );
   }
 
   register(userData: RegisterFormData) {
-    return this.http.post(`${this.baseUrl}/users/register`, userData);
+    return this.http.post<RegisterFormData>(
+      `${this.baseUrl}/users/register`,
+      userData
+    );
   }
 
   logout() {
-    localStorage.removeItem('userInfo');
+    localStorage.removeItem('user');
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
+  }
+
+  setTokenInLocal(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  setUserDataInLocal(user: any) {
+    localStorage.setItem('user', JSON.stringify(user));
   }
 }

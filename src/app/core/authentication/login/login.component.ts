@@ -6,8 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { LoginData, LoginFormData } from '../auth.model';
 import { Router, RouterLink } from '@angular/router';
+import { Role } from '../../../utility/role.enum';
+import { ToastrService } from 'ngx-toastr';
+import { MessageType } from '../../../utility/toastr.enum';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   fb = inject(FormBuilder);
   router = inject(Router);
   isLoading: boolean = false;
+  toastr = inject(ToastrService);
 
   ngOnInit(): void {
     this.initializeForm();
@@ -29,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   initializeForm() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
@@ -39,23 +42,34 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    this.authService.login(this.loginForm.value).subscribe({
-      next: (data: any) => {
-        console.log('data', data);
-        if (data) {
-          localStorage.setItem('token', data.token);
-          localStorage.setItem('userInfo', JSON.stringify(data.userFound));
+    const { username, password } = this.loginForm.value;
+    const loginData = { username, password };
+    this.authService.login(loginData).subscribe({
+      next: (res: any) => {
+        console.log('data', res?.data);
+        if (res && res.data) {
+          const user = res?.data?.user;
           this.isLoading = false;
-          if (data.userFound.isAdmin) {
+          this.authService.setTokenInLocal(res.data.accessToken);
+          this.authService.setUserDataInLocal(user);
+          console.log('uss', user.role === Role.ADMIN);
+          if (user.role === Role.ADMIN) {
             this.router.navigate(['/admin']);
           } else {
             this.router.navigate(['/']);
           }
+          this.toastr.success(`Welcome ${user.username}`, MessageType.SUCCESS);
+        } else {
+          this.toastr.error(
+            'Something went wrong!, Please try again',
+            MessageType.ERROR
+          );
+          return;
         }
       },
       error: (err: any) => {
         this.isLoading = false;
-        console.error(err.message);
+        this.toastr.error(err.error.message, MessageType.ERROR);
       },
     });
   }

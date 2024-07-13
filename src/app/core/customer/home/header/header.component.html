@@ -22,7 +22,7 @@
 
 @if (isUserPopup) {
 <div class="user-popup">
-  <ul>
+  <ul (click)="closeUserPopup()">
     <li [routerLink]="['/profile']">
       <i class="fi fi-rr-user-gear"></i> Profile
     </li>

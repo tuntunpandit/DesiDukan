@@ -1,14 +1,14 @@
 <div class="login-wrapper">
-  <form [formGroup]="registerForm">
+  <form [formGroup]="registerForm" autocomplete="off">
     <div class="card login-card">
       <div class="mb-3">
-        <label for="userId" class="form-label">Full Name</label>
+        <label for="userId" class="form-label">Username</label>
         <input
           type="text"
           class="form-control"
           id="userId"
           aria-describedby="user name"
-          formControlName="fullname"
+          formControlName="username"
         />
       </div>
       <div class="mb-3">
@@ -28,6 +28,7 @@
           class="form-control"
           id="passwordId"
           formControlName="password"
+          autocomplete="new-password"
         />
       </div>
       <button
