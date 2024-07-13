@@ -1,0 +1,10 @@
+.order-card {
+  table {
+    tbody {
+      tr:last-child > td,
+      tr:last-child > th {
+        border: none;
+      }
+    }
+  }
+}

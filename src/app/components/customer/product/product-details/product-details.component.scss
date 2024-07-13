@@ -1,0 +1,35 @@
+.product-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 50px 10px;
+
+  .left-part {
+    img {
+      width: 100%;
+    }
+  }
+
+  .right-part {
+    .colors {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 15px 0px;
+      .color-box {
+        background-color: red;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-top: 0px;
+      }
+    }
+    .add-to-cart,
+    .checkout {
+      margin: 15px 0px;
+      button {
+        width: 200px;
+      }
+    }
+  }
+}

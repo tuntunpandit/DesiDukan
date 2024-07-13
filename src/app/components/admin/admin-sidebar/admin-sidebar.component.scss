@@ -1,0 +1,50 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  background-color: #ffff;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 0px 0px 2px 0px #b8b7b7f0;
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    cursor: pointer;
+    h2 {
+      font-weight: 700;
+      margin: 0;
+      .logo-1 {
+        color: green;
+      }
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 40px 0px;
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 400;
+      padding: 14px 20px;
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.644);
+      transition: all 0.3s ease-out;
+      &:hover {
+        background-color: gray;
+        color: white;
+      }
+      a {
+        all: unset;
+      }
+    }
+  }
+}
