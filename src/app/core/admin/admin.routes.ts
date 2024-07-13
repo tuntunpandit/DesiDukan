@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { AdminWrapperComponent } from './admin-wrapper/admin-wrapper.component';
+import { AdminDashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './product/products/products.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { CategoriesComponent } from './category/categories/categories.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { ProfileComponent } from '../common/profile/profile.component';
+import { WrapperComponent } from '../common/wrapper/wrapper.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
     path: '',
-    component: AdminWrapperComponent,
+    component: WrapperComponent,
     children: [
       {
         path: 'dashboard',

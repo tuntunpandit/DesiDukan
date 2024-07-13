@@ -45,7 +45,7 @@ export class SignupComponent {
       username,
       email,
       password,
-      role: 'USER',
+      role: 'ADMIN',
     };
     this.authService.register(registrationData).subscribe({
       next: (res: any) => {

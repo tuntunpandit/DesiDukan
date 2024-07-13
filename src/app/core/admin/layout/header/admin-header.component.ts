@@ -1,6 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
-import { AuthService } from '../../authentication/auth.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../common/authentication/auth.service';
 
 @Component({
   selector: 'app-admin-header',

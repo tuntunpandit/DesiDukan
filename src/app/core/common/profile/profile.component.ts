@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { User } from '../../authentication/auth.model';
 import { CustomerService } from '../../customer/customer.service';
+import { User } from '../authentication/auth.model';
 
 @Component({
   selector: 'app-profile',

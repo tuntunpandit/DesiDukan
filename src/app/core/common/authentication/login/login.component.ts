@@ -7,9 +7,9 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { Role } from '../../../utility/role.enum';
 import { ToastrService } from 'ngx-toastr';
-import { MessageType } from '../../../utility/toastr.enum';
+import { Role } from '../../../../utility/role.enum';
+import { MessageType } from '../../../../utility/toastr.enum';
 
 @Component({
   selector: 'app-login',
@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
           this.isLoading = false;
           this.authService.setTokenInLocal(res.data.accessToken);
           this.authService.setUserDataInLocal(user);
-          console.log('uss', user.role === Role.ADMIN);
           if (user.role === Role.ADMIN) {
             this.router.navigate(['/admin']);
           } else {

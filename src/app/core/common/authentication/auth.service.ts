@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { LoginData, LoginFormData, RegisterFormData } from './auth.model';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../../environment';
+import { environment } from '../../../../environment';
 
 @Injectable({
   providedIn: 'root',
