@@ -27,12 +27,12 @@ export interface User {
 }
 
 export interface LoginFormData {
-  username: string;
+  email: string;
   password: string;
 }
 
 export interface RegisterFormData {
-  username: string;
+  fullname: string;
   email: string;
   password: string;
   role?: string;

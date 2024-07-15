@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
-import { AuthService } from '../../../authentication/auth.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../common/authentication/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +13,11 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
   isUserPopup: boolean = false;
   authService = inject(AuthService);
+  userService = inject(AuthService);
+  isUserAdmin = false;
+  constructor() {
+    this.isUserAdmin = this.userService.getUserInfo()?.isAdmin;
+  }
 
   openUserPopup() {
     this.isUserPopup = !this.isUserPopup;

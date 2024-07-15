@@ -1,1 +1,96 @@
-<p>add-product works!</p>
+<div class="container">
+  <h6>Add Product</h6>
+
+  <form [formGroup]="productForm" class="row bg-body-tertiary my-4 px-4 py-4">
+    <div class="col-md-6 col-12">
+      <div class="mb-3">
+        <label for="productName" class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          formControlName="name"
+        />
+      </div>
+    </div>
+    <div class="col-md-6 col-12">
+      <div class="mb-3">
+        <label for="productPrice" class="form-label">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="productPrice"
+          formControlName="price"
+        />
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="productDescription" class="form-label">Description</label>
+        <textarea
+          id="productDescription"
+          class="form-control"
+          maxlength="200"
+          rows="3"
+          formControlName="description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-12">
+      <div class="mb-3">
+        <label for="productQuantity" class="form-label">Quantity</label>
+        <input
+          type="number"
+          class="form-control"
+          id="productQuantity"
+          formControlName="stock"
+        />
+      </div>
+    </div>
+    <div class="col-md-6 col-12">
+      <div class="mb-3">
+        <label for="productCategory" class="form-label">Category</label>
+        <select
+          id="productCategory"
+          class="form-select"
+          aria-label="select product category"
+          formControlName="category"
+        >
+          <option value="" [defaultSelected]="true" disabled>
+            Select category
+          </option>
+          @for (item of categories(); track $index) {
+          <option [value]="item._id">{{ item.name }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="productMainImage" class="form-label"> Add Image</label>
+        <app-file-upload
+          [multiple]="false"
+          (fileSelected)="setSelectedFileToForm($event, 'mainImage')"
+        />
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="productSubImage" class="form-label"> Add Sub Image</label>
+        <app-file-upload
+          [multiple]="true"
+          (fileSelected)="setSelectedFileToForm($event, 'subImages')"
+        />
+      </div>
+    </div>
+
+    <button
+      class="btn btn-success"
+      [disabled]="productForm.invalid"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </form>
+</div>

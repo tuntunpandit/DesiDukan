@@ -28,8 +28,8 @@ export class HomeComponent implements OnInit {
   products!: Product[];
   customerService = inject(CustomerService);
   ngOnInit(): void {
-    this.getAllCategories();
-    this.getAllProducts();
+    // this.getAllCategories();
+    // this.getAllProducts();
   }
 
   getAllCategories() {

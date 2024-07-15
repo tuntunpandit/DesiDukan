@@ -1,7 +1,10 @@
 <div class="products px-4">
   <div class="head">
-    <h5 class="mb-0">Products</h5>
-    <button class="btn btn-sm btn-outline-secondary add-btn">
+    <h5 class="mb-0">All Products</h5>
+    <button
+      class="btn btn-sm btn-outline-secondary add-btn"
+      (click)="openAddProductPage()"
+    >
       Add<i class="fi fi-br-add"></i>
     </button>
   </div>
@@ -9,25 +12,60 @@
     <table class="table table-hover mt-1 mb-1">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
           <th scope="col">Brand</th>
-          <th scope="col">Sold</th>
-          <th scope="col">Remaining</th>
+          <th scope="col">Category</th>
+          <th scope="col">Price</th>
           <th scope="col">Total</th>
+          <th scope="col">Sold</th>
+          <th scope="col">Left</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        @for (product of products(); track product._id) {
+        @if (!isLoading) { @if (products().length > 0) { @for (product of
+        products(); track product._id) {
         <tr>
-          <th scope="row">{{ $index + 1 }}</th>
+          <th>
+            @if (product.images && product.images.length > 0) {
+            <img [src]="product.images[0]" />
+            } @else {
+            <img src="assets/default.png" />
+            }
+          </th>
           <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
           <td>{{ product.brand }}</td>
+          <td>{{ product.category }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.totalQty }}</td>
           <td>{{ product.totalSold }}</td>
           <td>{{ product.qtyLeft }}</td>
-          <td>{{ product.totalQty }}</td>
+          <td>
+            <div class="buttons">
+              <button class="btn btn-outline-warning">
+                <i class="fi fi-br-edit-alt"></i>
+              </button>
+              <button class="btn btn-outline-danger">
+                <i class="fi fi-br-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        } } @else {
+        <tr>
+          <td colspan="9">
+            <p class="no-item-table">No product avavilable!!!</p>
+          </td>
+        </tr>
+        } } @else {
+        <tr>
+          <td colspan="9">
+            <div class="d-flex align-items-center gap-2 flex-column py-3">
+              <i class="fi fi-rr-spinner rotating"></i>
+              Loading...
+            </div>
+          </td>
         </tr>
         }
       </tbody>

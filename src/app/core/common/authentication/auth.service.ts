@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { LoginData, LoginFormData, RegisterFormData } from './auth.model';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../../environment';
+import { environment } from '../../../../environment';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,16 @@ export class AuthService {
     return token ? token : '';
   }
 
+  getRefreshToken() {
+    const token = localStorage.getItem('refresh-token');
+    return token ? token : '';
+  }
+
+  refreshToken() {
+    console.log('refresh api getting called');
+    return this.http.post(`${this.baseUrl}/users/refresh-token`, null);
+  }
+
   getUserInfo() {
     const user = localStorage.getItem('user');
     if (user) {
@@ -37,11 +47,8 @@ export class AuthService {
     );
   }
 
-  register(userData: RegisterFormData) {
-    return this.http.post<RegisterFormData>(
-      `${this.baseUrl}/users/register`,
-      userData
-    );
+  register(userData: any) {
+    return this.http.post<any>(`${this.baseUrl}/users/register`, userData);
   }
 
   logout() {

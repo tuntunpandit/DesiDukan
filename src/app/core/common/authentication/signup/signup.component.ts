@@ -31,7 +31,7 @@ export class SignupComponent {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
-      username: ['', [Validators.required]],
+      fullname: ['', [Validators.required]],
     });
   }
 
@@ -40,13 +40,13 @@ export class SignupComponent {
       return;
     }
     this.isLoading = true;
-    const { username, email, password } = this.registerForm.value;
+    const { fullname, email, password } = this.registerForm.value;
     const registrationData: RegisterFormData = {
-      username,
+      fullname,
       email,
       password,
-      role: 'USER',
     };
+
     this.authService.register(registrationData).subscribe({
       next: (res: any) => {
         console.log('Data', res);

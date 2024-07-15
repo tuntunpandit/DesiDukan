@@ -1,7 +1,8 @@
 <div class="nav">
-  <div class="logo" [routerLink]="'/'">
+  <div class="logo" [routerLink]="isUserAdmin ? '/admin/dashboard' : '/'">
     <h2><span class="logo-1">Desi</span>Dukan</h2>
   </div>
+  @if (!isUserAdmin) {
   <div class="quick-links">
     <ul>
       <li><a class="link" [routerLink]="['/products']">Products</a></li>
@@ -18,12 +19,19 @@
       <i class="fi fi-rs-circle-user" (click)="openUserPopup()"></i>
     </div>
   </div>
+  } @if (isUserAdmin) {
+  <div class="right-section">
+    <div class="user-section">
+      <i class="fi fi-rs-circle-user" (click)="openUserPopup()"></i>
+    </div>
+  </div>
+  }
 </div>
 
 @if (isUserPopup) {
 <div class="user-popup">
   <ul (click)="closeUserPopup()">
-    <li [routerLink]="['/profile']">
+    <li [routerLink]="isUserAdmin ? '/admin/profile' : '/profile'">
       <i class="fi fi-rr-user-gear"></i> Profile
     </li>
     <li (click)="logout()"><i class="fi fi-rs-sign-out-alt"></i> Logout</li>
