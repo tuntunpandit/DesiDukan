@@ -3,7 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environment';
 import { Product } from '../../models/product';
 import { Order, Stat } from '../../models/stats';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
+import { Category } from '../../models/category';
 
 @Injectable({
   providedIn: 'root',
@@ -14,36 +15,24 @@ export class AdminService {
 
   constructor() {}
 
-  async getStats(): Promise<any> {
-    const result = await fetch(`${this.apiUrl}/orders/sales/stats`, {
-      method: 'GET',
-    });
-    const stats = await result.json();
-    return stats;
+  getProducts() {
+    return this.http.get(`${this.apiUrl}/products`);
   }
 
-  async getOrders(): Promise<Order[]> {
-    const result = await fetch(`${this.apiUrl}/orders`, {
-      method: 'GET',
-    });
-    const data = await result.json();
-    return data.orders;
+  addProduct(product: FormData) {
+    return this.http.post(`${this.apiUrl}/products`, product);
   }
 
-  async getProducts(): Promise<Product[]> {
-    const result = await fetch(`${this.apiUrl}/products`, {
-      method: 'GET',
-    });
-    const data = await result.json();
-    return data.products;
+  /**
+   * get product category lists
+   * @returns List of Category
+   */
+
+  getProductCategories() {
+    return this.http.get(`${this.apiUrl}/categories`);
   }
 
-  async addProduct(product: Partial<Product>): Promise<any> {
-    const result = await fetch(`${this.apiUrl}/products`, {
-      method: 'POST',
-      body: JSON.stringify(product),
-    });
-    const data = await result.json();
-    return data;
+  createCategory(name: string) {
+    return this.http.post(`${this.apiUrl}/ecommerce/categories`, { name });
   }
 }

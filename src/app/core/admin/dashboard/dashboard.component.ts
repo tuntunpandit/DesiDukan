@@ -22,27 +22,5 @@ export class AdminDashboardComponent implements OnInit {
   });
   constructor() {}
 
-  ngOnInit(): void {
-    this.getStats();
-    this.getRecentOrders();
-  }
-
-  async getStats() {
-    try {
-      const data = await this.adminService.getStats();
-      console.log('ddd', data);
-      // const formattedData = this.prepareData(data);
-      this.stats.set(data);
-    } catch (err: any) {
-      console.error(err.message);
-    }
-  }
-
-  async getRecentOrders() {
-    try {
-      const data = await this.adminService.getOrders();
-      this.recentOrders.set(data);
-    } catch (err: any) {}
-  }
-  prepareData(data: Stat) {}
+  ngOnInit(): void {}
 }

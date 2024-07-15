@@ -8,7 +8,6 @@ import {
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Role } from '../../../../utility/role.enum';
 import { MessageType } from '../../../../utility/toastr.enum';
 
 @Component({
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
 
   initializeForm() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
@@ -42,17 +41,17 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    const { username, password } = this.loginForm.value;
-    const loginData = { username, password };
+    const { email, password } = this.loginForm.value;
+    const loginData = { email, password };
     this.authService.login(loginData).subscribe({
       next: (res: any) => {
         console.log('data', res?.data);
-        if (res && res.data) {
-          const user = res?.data?.user;
-          this.isLoading = false;
-          this.authService.setTokenInLocal(res.data.accessToken);
+        if (res) {
+          const token = res?.token;
+          const user = res?.userFound;
+          this.authService.setTokenInLocal(token);
           this.authService.setUserDataInLocal(user);
-          if (user.role === Role.ADMIN) {
+          if (user.isAdmin) {
             this.router.navigate(['/admin']);
           } else {
             this.router.navigate(['/']);
@@ -65,6 +64,7 @@ export class LoginComponent implements OnInit {
           );
           return;
         }
+        this.isLoading = false;
       },
       error: (err: any) => {
         this.isLoading = false;

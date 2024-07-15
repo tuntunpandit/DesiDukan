@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../common/authentication/auth.service';
-import { Role } from '../../../../utility/role.enum';
 
 @Component({
   selector: 'app-header',
@@ -14,14 +13,10 @@ import { Role } from '../../../../utility/role.enum';
 export class HeaderComponent {
   isUserPopup: boolean = false;
   authService = inject(AuthService);
-  ADMIN = Role.ADMIN;
-  USER = Role.USER;
-  userRole!: string;
   userService = inject(AuthService);
-
+  isUserAdmin = false;
   constructor() {
-    const user = this.userService.getUserInfo();
-    this.userRole = user?.role;
+    this.isUserAdmin = this.userService.getUserInfo()?.isAdmin;
   }
 
   openUserPopup() {

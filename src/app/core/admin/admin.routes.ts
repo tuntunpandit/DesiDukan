@@ -3,7 +3,6 @@ import { AdminDashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './product/products/products.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { CategoriesComponent } from './category/categories/categories.component';
-import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { ProfileComponent } from '../common/profile/profile.component';
 import { WrapperComponent } from '../common/wrapper/wrapper.component';
 
@@ -21,7 +20,7 @@ export const ADMIN_ROUTES: Routes = [
         component: ProfileComponent,
       },
       {
-        path: 'products',
+        path: 'product',
         component: ProductsComponent,
       },
       {
@@ -29,12 +28,12 @@ export const ADMIN_ROUTES: Routes = [
         component: AddProductComponent,
       },
       {
-        path: 'categories',
-        component: CategoriesComponent,
+        path: 'product/edit/:id',
+        component: AddProductComponent,
       },
       {
-        path: 'categories/add',
-        component: AddCategoryComponent,
+        path: 'category',
+        component: CategoriesComponent,
       },
       {
         path: '',

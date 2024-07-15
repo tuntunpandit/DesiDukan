@@ -2,13 +2,13 @@
   <form [formGroup]="loginForm" autocomplete="off">
     <div class="card login-card">
       <div class="mb-3">
-        <label for="userName" class="form-label">Username</label>
+        <label for="userEmail" class="form-label">Email</label>
         <input
-          type="text"
+          type="email"
           class="form-control"
-          id="userName"
-          aria-describedby="user name"
-          formControlName="username"
+          id="userEmail"
+          aria-describedby="email address"
+          formControlName="email"
         />
       </div>
       <div class="mb-4">

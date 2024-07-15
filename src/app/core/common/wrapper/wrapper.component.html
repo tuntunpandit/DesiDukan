@@ -7,12 +7,12 @@
     <div
       class="content-wrapper"
       [ngStyle]="
-        userRole === ADMIN
+        isUserAdmin
           ? { 'grid-template-columns': '200px 1fr' }
           : { 'grid-template-columns': '1fr' }
       "
     >
-      @if (userRole === ADMIN) {
+      @if (isUserAdmin) {
       <app-admin-sidebar />
       }
       <div id="content">

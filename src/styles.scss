@@ -69,5 +69,25 @@ table {
     th {
       padding: 15px 10px !important;
     }
+    .no-item-table {
+      padding: 20px 20px 30px 10px;
+    }
   }
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.btn {
+  min-width: 101px;
+}
+
+.mat-mdc-dialog-actions {
+  gap: 20px;
+  padding: 16px 0px 30px 0px !important;
+}
+
+i.fi {
+  line-height: 0;
 }

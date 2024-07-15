@@ -1,1 +1,64 @@
-<p>categories works!</p>
+<div class="products px-4">
+  <div class="head">
+    <h5 class="mb-0">All Category</h5>
+    <button
+      class="btn btn-sm btn-outline-secondary add-btn"
+      (click)="openCategoryModal()"
+    >
+      Add<i class="fi fi-br-add"></i>
+    </button>
+  </div>
+  <div class="product-card card">
+    <table class="table table-hover mt-1 mb-1">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Created By</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (!isLoading) { @if (categories().length > 0) { @for (category of
+        categories(); track category._id) {
+        <tr>
+          <th>
+            @if (category.image) {
+            <img [src]="category.image" />
+            } @else {
+            <img src="assets/default.png" />
+            }
+          </th>
+          <td>{{ category.name }}</td>
+          <td>{{ category.user }}</td>
+          <td>
+            <div class="buttons">
+              <button class="btn btn-outline-warning">
+                <i class="fi fi-br-edit-alt"></i>
+              </button>
+              <button class="btn btn-outline-danger">
+                <i class="fi fi-br-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        } } @else {
+        <tr>
+          <td colspan="4">
+            <p class="no-item-table">No category avavilable!!!</p>
+          </td>
+        </tr>
+        } } @else {
+        <tr>
+          <td colspan="4">
+            <div class="d-flex align-items-center gap-2 flex-column py-3">
+              <i class="fi fi-rr-spinner rotating"></i>
+              Loading...
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

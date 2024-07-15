@@ -20,12 +20,9 @@ import { AuthService } from '../authentication/auth.service';
   styleUrl: './wrapper.component.scss',
 })
 export class WrapperComponent {
-  ADMIN = Role.ADMIN;
-  USER = Role.USER;
-  userRole!: string;
+  isUserAdmin = false;
   userService = inject(AuthService);
   constructor() {
-    const user = this.userService.getUserInfo();
-    this.userRole = user?.role;
+    this.isUserAdmin = this.userService.getUserInfo()?.isAdmin;
   }
 }

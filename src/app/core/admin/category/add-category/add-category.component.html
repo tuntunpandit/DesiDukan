@@ -1,1 +1,37 @@
-<p>add-category works!</p>
+<h2 mat-dialog-title>Add Category</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="categoryForm" class="row" (ngSubmit)="onSubmit()">
+    <div class="col-12">
+      <div class="mb-3">
+        <label for="categoryId" class="form-label">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          id="categoryId"
+          formControlName="name"
+        />
+      </div>
+    </div>
+  </form>
+  <mat-dialog-actions align="end">
+    <button
+      class="btn btn-secondary"
+      [mat-dialog-close]="true"
+      (click)="onClose()"
+    >
+      Cancel
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-success d-flex justify-content-center align-items-center gap-3"
+      [mat-dialog-close]="true"
+      [disabled]="isLoading || categoryForm.invalid"
+      (click)="onSubmit()"
+    >
+      @if(!isLoading) { Add } @else { Adding...
+      <i class="fi fi-rr-spinner rotating"></i>
+      }
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>
