@@ -1,28 +1,36 @@
 <div class="sidebar">
   <ul>
-    <li [routerLink]="['/admin/product']">
+    <li [routerLink]="['/admin']">
+      <i class="fi fi-br-dashboard"></i>
+      <p class="mb-0">Dashboard</p>
+    </li>
+    <li [routerLink]="['/admin/orders']">
+      <i class="fi fi-br-order-history"></i>
+      <p class="mb-0">Order</p>
+    </li>
+    <li [routerLink]="['/admin/products']">
       <i class="fi fi-br-ambulance"></i>
       <p class="mb-0">Product</p>
     </li>
-    <li [routerLink]="['/admin/category']">
+    <li [routerLink]="['/admin/categories']">
       <i class="fi fi-br-category-alt"></i>
       <p class="mb-0">Category</p>
     </li>
-    <li [routerLink]="['/admin/category']">
+    <li [routerLink]="['/admin/brands']">
       <i class="fi fi-br-brand"></i>
       <p class="mb-0">Brand</p>
     </li>
-    <li [routerLink]="['/admin/category']">
+    <li [routerLink]="['/admin/colors']">
       <i class="fi fi-br-rainbow"></i>
       <p class="mb-0">Color</p>
     </li>
-    <li [routerLink]="['/admin/category']">
+    <li [routerLink]="['/admin/coupons']">
       <i class="fi fi-br-candy-corn"></i>
       <p class="mb-0">Coupon</p>
     </li>
-    <li [routerLink]="['/admin/category']">
-      <i class="fi fi-br-order-history"></i>
-      <p class="mb-0">Order</p>
+    <li [routerLink]="['/admin/reviews']" class="disable">
+      <i class="fi fi-br-review"></i>
+      <p class="mb-0">Review</p>
     </li>
   </ul>
 </div>
