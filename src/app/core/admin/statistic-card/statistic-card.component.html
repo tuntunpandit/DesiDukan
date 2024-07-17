@@ -1,38 +1,69 @@
 <div class="cards">
   <div class="card p-4">
     <div class="left">
-      <img src="assets/brands/gucci.png" alt="" />
+      <i class="fi fi-br-money-transfer-coin-arrow"></i>
     </div>
     <div class="right">
-      <div class="title">Today's Sales</div>
-      <div class="price">$0.00</div>
+      <div class="title">Today's Sale</div>
+      <div class="price">
+        {{
+          (currentDaySaleData()?.data ? currentDaySaleData()?.data : 0)
+            | currency : "USD"
+        }}
+      </div>
+    </div>
+  </div>
+  <!-- <div class="card p-4">
+    <div class="left">
+      <i class="fi fi-br-chat-arrow-down"></i>
+    </div>
+    <div class="right">
+      <div class="title">Minimum Sale</div>
+      <div class="price">
+        {{
+          (overAllSalesData().minimumSale ? overAllSalesData().minimumSale : 0)
+            | currency : "USD"
+        }}
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="card p-4">
+    <div class="left">
+      <i class="fi fi-br-chat-arrow-grow"></i>
+    </div>
+    <div class="right">
+      <div class="title">Maximum Sale</div>
+      <div class="price">
+        {{
+          (overAllSalesData().maxSale ? overAllSalesData().maxSale : 0)
+            | currency : "USD"
+        }}
+      </div>
+    </div>
+  </div> -->
+  <div class="card p-4">
+    <div class="left">
+      <i class="fi fi-br-rectangle-list"></i>
+    </div>
+    <div class="right">
+      <div class="title">Total Sale</div>
+      <div class="price">
+        {{
+          (overAllSalesData().totalSales ? overAllSalesData().totalSales : 0)
+            | currency : "USD"
+        }}
+      </div>
     </div>
   </div>
   <div class="card p-4">
     <div class="left">
-      <img src="assets/brands/ck.png" alt="" />
+      <i class="fi fi-br-order-history"></i>
     </div>
     <div class="right">
-      <div class="title">Minimum Order</div>
-      <div class="price">$0.00</div>
-    </div>
-  </div>
-  <div class="card p-4">
-    <div class="left">
-      <img src="assets/brands/ck.png" alt="" />
-    </div>
-    <div class="right">
-      <div class="title">Maximum Oder</div>
-      <div class="price">$0.00</div>
-    </div>
-  </div>
-  <div class="card p-4">
-    <div class="left">
-      <img src="assets/brands/ck.png" alt="" />
-    </div>
-    <div class="right">
-      <div class="title">Total Sales</div>
-      <div class="price">$0.00</div>
+      <div class="title">Total Order</div>
+      <div class="price">
+        {{ totalOrder() }}
+      </div>
     </div>
   </div>
 </div>

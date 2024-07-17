@@ -43,6 +43,7 @@ export interface OrderItem {
   qty: number;
   price: number;
   description: string;
+  noOfTimeBought?: number;
 }
 
 export interface ShippingAddress2 {

@@ -1,12 +1,12 @@
 export interface Stat {
   success: boolean;
   message: string;
-  orders: Order[];
+  orders: StatOrder[];
   saleToday: any[];
 }
 
-export interface Order {
-  _id: any;
+export interface StatOrder {
+  _id?: any;
   minimumSale: number;
   totalSales: number;
   maxSale: number;

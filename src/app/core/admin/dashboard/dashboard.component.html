@@ -1,6 +1,13 @@
 <div class="dashboard-wrapper">
-  <app-statistic-card />
-  <div class="recent-orders mt-4">
-    <app-recent-order />
-  </div>
+  <app-statistic-card
+    [overAllSalesData]="overAllSalesData()"
+    [currentDaySaleData]="currentDaySaleData()"
+    [isSalesDataLoading]="isStatsLoading()"
+    [totalOrder]="orders().length"
+  />
+
+  <app-top-selling-products
+    [products]="topSellingProducts()"
+    [isLoading]="isOrderLoading()"
+  />
 </div>
