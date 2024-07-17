@@ -1,0 +1,50 @@
+span.chig-g {
+  padding: 3px 10px;
+  border-radius: 4px;
+  color: white;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+span.delivered {
+  background: rgba(0, 128, 0, 0.6);
+}
+
+span.pending {
+  background: rgba(129, 116, 24, 0.6);
+}
+
+span.shipped {
+  background: rgba(128, 0, 128, 0.6);
+}
+
+span.rejected {
+  background: rgba(255, 0, 0, 0.6);
+}
+
+span.date-g {
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+
+.table > tbody > tr > td {
+  margin-bottom: 4px;
+}
+
+.table tbody tr td {
+  border-top: none; /* Remove default table cell borders */
+}
+
+.table tbody tr {
+  border: 1px solid rgb(222, 226, 230);
+  border-radius: 0.35rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 0.3rem 0.15rem rgba(0, 0, 0, 0.075);
+  // box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.085);
+  transition: all 0.3s ease-in-out;
+}

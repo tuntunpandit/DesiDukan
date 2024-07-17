@@ -1,0 +1,80 @@
+<div class="products px-4">
+  <div class="head mt-md-5 mb-md-3 my-3">
+    <h5 class="mb-0">All Category</h5>
+  </div>
+  <div class="product-card card border-0">
+    <table class="table table-hover mt-1 mb-1 order-table">
+      <thead>
+        <tr>
+          <th scope="col">Order No</th>
+          <th scope="col">Date</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Customer Address</th>
+          <th scope="col">Total Items</th>
+          <th scope="col">Total Price</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (!isLoading) { @if (orders().length > 0) { @for (order of orders();
+        track order._id) {
+        <tr>
+          <td>
+            <a [routerLink]="['/admin/orders', order._id]">{{ order._id }}</a>
+          </td>
+          <td>
+            <div class="d-flex flex-column align-items-center">
+              <span>{{ order.createdAt | date : "h:mm a" }}</span>
+              <span class="date-g">{{
+                order.createdAt | date : "d-MM-YYYY"
+              }}</span>
+            </div>
+          </td>
+          <td>
+            {{ order.user.fullname ? order.user.fullname : ("" | titlecase) }}
+          </td>
+          <td>
+            {{
+              order.shippingAddress && order.shippingAddress.postalAddress
+                ? order.shippingAddress.postalAddress
+                : ""
+            }}
+          </td>
+          <td>{{ order.orderItems.length || 0 }}</td>
+          <td>{{ order.totalPrice | currency : "USD" : "symbol" }}</td>
+          <td>
+            <span class="chig-g" [ngClass]="order.status ? order.status : ''">{{
+              order.status
+            }}</span>
+          </td>
+          <!-- <td>
+            <div class="buttons">
+              <button class="btn btn-outline-warning">
+                <i class="fi fi-br-edit-alt"></i>
+              </button>
+              <button class="btn btn-outline-danger">
+                <i class="fi fi-br-trash"></i>
+              </button>
+            </div>
+          </td> -->
+        </tr>
+        } } @else {
+        <tr>
+          <td colspan="7">
+            <p class="no-item-table">No category avavilable!!!</p>
+          </td>
+        </tr>
+        } } @else {
+        <tr>
+          <td colspan="7">
+            <div class="d-flex align-items-center gap-2 flex-column py-3">
+              <i class="fi fi-rr-spinner rotating"></i>
+              Loading...
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
