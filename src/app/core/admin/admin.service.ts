@@ -1,10 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environment';
-import { Product } from '../../models/product';
-import { Order, Stat } from '../../models/stats';
-import { firstValueFrom, Observable } from 'rxjs';
-import { Category } from '../../models/category';
 
 @Injectable({
   providedIn: 'root',
@@ -55,5 +51,10 @@ export class AdminService {
   // brand
   getOrders() {
     return this.http.get(`${this.apiUrl}/orders`);
+  }
+
+  // sell stats of order - admin
+  getSellStats() {
+    return this.http.get(`${this.apiUrl}/orders/sales/stats`);
   }
 }

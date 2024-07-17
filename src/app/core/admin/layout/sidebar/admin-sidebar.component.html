@@ -1,34 +1,38 @@
 <div class="sidebar">
   <ul>
-    <li [routerLink]="['/admin']">
+    <li [routerLink]="['/admin/dashboard']" routerLinkActive="active">
       <i class="fi fi-br-dashboard"></i>
       <p class="mb-0">Dashboard</p>
     </li>
-    <li [routerLink]="['/admin/orders']">
+    <li [routerLink]="['/admin/orders']" routerLinkActive="active">
       <i class="fi fi-br-order-history"></i>
       <p class="mb-0">Order</p>
     </li>
-    <li [routerLink]="['/admin/products']">
+    <li [routerLink]="['/admin/products']" routerLinkActive="active">
       <i class="fi fi-br-ambulance"></i>
       <p class="mb-0">Product</p>
     </li>
-    <li [routerLink]="['/admin/categories']">
+    <li [routerLink]="['/admin/categories']" routerLinkActive="active">
       <i class="fi fi-br-category-alt"></i>
       <p class="mb-0">Category</p>
     </li>
-    <li [routerLink]="['/admin/brands']">
+    <li [routerLink]="['/admin/brands']" routerLinkActive="active">
       <i class="fi fi-br-brand"></i>
       <p class="mb-0">Brand</p>
     </li>
-    <li [routerLink]="['/admin/colors']">
+    <li [routerLink]="['/admin/colors']" routerLinkActive="active">
       <i class="fi fi-br-rainbow"></i>
       <p class="mb-0">Color</p>
     </li>
-    <li [routerLink]="['/admin/coupons']">
+    <li [routerLink]="['/admin/coupons']" routerLinkActive="active">
       <i class="fi fi-br-candy-corn"></i>
       <p class="mb-0">Coupon</p>
     </li>
-    <li [routerLink]="['/admin/reviews']" class="disable">
+    <li
+      [routerLink]="['/admin/reviews']"
+      routerLinkActive="active"
+      class="disable"
+    >
       <i class="fi fi-br-review"></i>
       <p class="mb-0">Review</p>
     </li>

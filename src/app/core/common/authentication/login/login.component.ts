@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           } else {
             this.router.navigate(['/']);
           }
-          this.toastr.success(`Welcome ${user.username}`, MessageType.SUCCESS);
+          this.toastr.success(`Welcome ${user.fullname}`, MessageType.SUCCESS);
         } else {
           this.toastr.error(
             'Something went wrong!, Please try again',
