@@ -1,0 +1,41 @@
+.colors {
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 1px;
+    .add-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      .fi-br-add {
+        line-height: 0;
+      }
+    }
+  }
+  .product-card {
+    table {
+      tbody {
+        tr:last-child > td,
+        tr:last-child > th {
+          border: none;
+        }
+        img {
+          height: 50px;
+          width: 50px;
+        }
+        .buttons {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          button {
+            min-width: 50px;
+          }
+        }
+      }
+    }
+  }
+}

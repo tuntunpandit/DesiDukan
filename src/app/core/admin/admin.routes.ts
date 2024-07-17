@@ -5,6 +5,12 @@ import { AddProductComponent } from './product/add-product/add-product.component
 import { CategoriesComponent } from './category/categories/categories.component';
 import { ProfileComponent } from '../common/profile/profile.component';
 import { WrapperComponent } from '../common/wrapper/wrapper.component';
+import { BrandsComponent } from './brand/brands/brands.component';
+import { ColorsComponent } from './color/colors/colors.component';
+import { OrdersComponent } from './order/orders/orders.component';
+import { CouponsComponent } from './coupon/coupons/coupons.component';
+import { ReviewsComponent } from './review/reviews/reviews.component';
+import { OrderDetailsComponent } from './order/order-details/order-details.component';
 
 export const ADMIN_ROUTES: Routes = [
   {
@@ -16,11 +22,15 @@ export const ADMIN_ROUTES: Routes = [
         component: AdminDashboardComponent,
       },
       {
-        path: 'profile',
-        component: ProfileComponent,
+        path: 'orders',
+        component: OrdersComponent,
       },
       {
-        path: 'product',
+        path: 'orders/:id',
+        component: OrderDetailsComponent,
+      },
+      {
+        path: 'products',
         component: ProductsComponent,
       },
       {
@@ -32,8 +42,28 @@ export const ADMIN_ROUTES: Routes = [
         component: AddProductComponent,
       },
       {
-        path: 'category',
+        path: 'categories',
         component: CategoriesComponent,
+      },
+      {
+        path: 'brands',
+        component: BrandsComponent,
+      },
+      {
+        path: 'colors',
+        component: ColorsComponent,
+      },
+      {
+        path: 'coupons',
+        component: CouponsComponent,
+      },
+      {
+        path: 'reviews',
+        component: ReviewsComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
       },
       {
         path: '',

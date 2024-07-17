@@ -64,10 +64,16 @@ body {
 }
 
 table {
+  thead,
   tbody {
     td,
     th {
-      padding: 15px 10px !important;
+      padding: 15px 15px !important;
+      min-width: 100px;
+      max-width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .no-item-table {
       padding: 20px 20px 30px 10px;
