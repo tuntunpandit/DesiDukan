@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../customer/home/header/header.component';
 import { AdminHeaderComponent } from '../../admin/layout/header/admin-header.component';
@@ -22,7 +22,19 @@ import { AuthService } from '../authentication/auth.service';
 export class WrapperComponent {
   isUserAdmin = false;
   userService = inject(AuthService);
+  isMobileScreen = true;
+  showCustomSidebar = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isMobileScreen = event.target.innerWidth < 760 ? true : false;
+    // this.showCustomSidebar = event.target.innerWidth < 760 ? true : false;
+  }
   constructor() {
     this.isUserAdmin = this.userService.getUserInfo()?.isAdmin;
+  }
+
+  toggleAdminSidebar(event: boolean) {
+    this.showCustomSidebar = event;
   }
 }

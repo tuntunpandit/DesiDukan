@@ -1,4 +1,7 @@
-<div class="sidebar">
+<div
+  class="sidebar"
+  [class.custom-sidebar]="showCustomSidebar() && isMobileScreen"
+>
   <ul>
     <li [routerLink]="['/admin/dashboard']" routerLinkActive="active">
       <i class="fi fi-br-dashboard"></i>

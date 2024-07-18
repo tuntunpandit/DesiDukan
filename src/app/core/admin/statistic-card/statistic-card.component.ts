@@ -14,6 +14,7 @@ export class StatisticCardComponent implements OnInit {
   currentDaySaleData = input.required<any>();
   isSalesDataLoading = input.required<boolean>();
   totalOrder = input.required<number>();
+  isOrderLoading = input.required<boolean>();
   constructor() {}
 
   ngOnInit(): void {
