@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { SearchComponent } from '../search/search.component';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../common/authentication/auth.service';
@@ -15,6 +15,9 @@ export class HeaderComponent {
   authService = inject(AuthService);
   userService = inject(AuthService);
   isUserAdmin = false;
+  isMobileScreen = input.required<boolean>();
+  onHamburgerClick = output<boolean>();
+  showSidebar = false;
   constructor() {
     this.isUserAdmin = this.userService.getUserInfo()?.isAdmin;
   }
@@ -29,5 +32,10 @@ export class HeaderComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  openAdminSidebar() {
+    this.showSidebar = !this.showSidebar;
+    this.onHamburgerClick.emit(this.showSidebar);
   }
 }

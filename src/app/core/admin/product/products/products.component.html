@@ -20,7 +20,7 @@
           <th scope="col">Total</th>
           <th scope="col">Sold</th>
           <th scope="col">Left</th>
-          <th scope="col">Actions</th>
+          <th scope="col" style="width: 20px"></th>
         </tr>
       </thead>
       <tbody>
@@ -42,14 +42,7 @@
           <td>{{ product.totalSold }}</td>
           <td>{{ product.qtyLeft }}</td>
           <td>
-            <div class="buttons">
-              <button class="btn btn-outline-warning">
-                <i class="fi fi-br-edit-alt"></i>
-              </button>
-              <button class="btn btn-outline-danger">
-                <i class="fi fi-br-trash"></i>
-              </button>
-            </div>
+            <i class="fi fi-br-menu-dots-vertical"></i>
           </td>
         </tr>
         } } @else {
@@ -72,3 +65,12 @@
     </table>
   </div>
 </div>
+
+<!-- <div class="buttons">
+  <button class="btn btn-outline-warning">
+    <i class="fi fi-br-edit-alt"></i>
+  </button>
+  <button class="btn btn-outline-danger">
+    <i class="fi fi-br-trash"></i>
+  </button>
+</div> -->

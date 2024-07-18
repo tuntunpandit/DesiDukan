@@ -1,19 +1,25 @@
 <div class="main-container">
   <header>
-    <app-header />
+    <app-header
+      [isMobileScreen]="isMobileScreen"
+      (onHamburgerClick)="toggleAdminSidebar($event)"
+    />
   </header>
 
   <main>
     <div
       class="content-wrapper"
       [ngStyle]="
-        isUserAdmin
+        isUserAdmin && !isMobileScreen
           ? { 'grid-template-columns': '200px 1fr' }
           : { 'grid-template-columns': '1fr' }
       "
     >
-      @if (isUserAdmin) {
-      <app-admin-sidebar />
+      @if (isUserAdmin && !isMobileScreen || showCustomSidebar) {
+      <app-admin-sidebar
+        [showCustomSidebar]="showCustomSidebar"
+        [isMobileScreen]="isMobileScreen"
+      />
       }
       <div id="content">
         <router-outlet />
