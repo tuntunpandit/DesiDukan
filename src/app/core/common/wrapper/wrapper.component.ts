@@ -35,7 +35,7 @@ export class WrapperComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkScreen(window.innerWidth);
+    this.isMobileScreen = this.checkScreen(window.innerWidth);
   }
 
   checkScreen(size: number) {
