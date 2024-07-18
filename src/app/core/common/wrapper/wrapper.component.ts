@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../customer/home/header/header.component';
 import { AdminHeaderComponent } from '../../admin/layout/header/admin-header.component';
@@ -19,7 +19,7 @@ import { AuthService } from '../authentication/auth.service';
   templateUrl: './wrapper.component.html',
   styleUrl: './wrapper.component.scss',
 })
-export class WrapperComponent {
+export class WrapperComponent implements OnInit {
   isUserAdmin = false;
   userService = inject(AuthService);
   isMobileScreen = true;
@@ -27,13 +27,20 @@ export class WrapperComponent {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isMobileScreen = event.target.innerWidth < 760 ? true : false;
+    this.isMobileScreen = this.checkScreen(event.target.innerWidth);
     // this.showCustomSidebar = event.target.innerWidth < 760 ? true : false;
   }
   constructor() {
     this.isUserAdmin = this.userService.getUserInfo()?.isAdmin;
   }
 
+  ngOnInit(): void {
+    this.checkScreen(window.innerWidth);
+  }
+
+  checkScreen(size: number) {
+    return size < 760 ? true : false;
+  }
   toggleAdminSidebar(event: boolean) {
     this.showCustomSidebar = event;
   }
