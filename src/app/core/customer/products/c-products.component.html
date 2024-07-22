@@ -1,0 +1,40 @@
+<div class="product-container">
+  <h4 class="product-title">Popular Products</h4>
+  <div class="row row-gap-4">
+    @for (product of products(); track product._id) {
+    <div class="col-md-3">
+      <div class="product-card">
+        <div class="product-thumbnail">
+          <img
+            [src]="
+              product.images && product.images.length
+                ? product.images[0]
+                : 'assets/default.png'
+            "
+            alt=""
+          />
+        </div>
+        <div class="product-wishlist">
+          <i class="fi fi-br-heart"></i>
+        </div>
+        <div class="product-info-wrapper">
+          <div class="info">
+            <h6>Product 1</h6>
+            <h6>$20</h6>
+          </div>
+          <div class="product-desc">
+            <p>This is a good product</p>
+          </div>
+          <div class="star-rating">
+            <div class="stars">****</div>
+            <span>(121)</span>
+          </div>
+          <div class="cart-btn">
+            <button class="btn btn-outline-secondary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

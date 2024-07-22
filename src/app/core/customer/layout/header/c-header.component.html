@@ -1,13 +1,18 @@
 <div class="nav">
-  <div class="logo" [routerLink]="isUserAdmin ? '/admin/dashboard' : '/'">
+  <div class="logo" [routerLink]="'/'">
     <h2><span class="logo-1">Desi</span>Dukan</h2>
+  </div>
+  <div class="quick-links">
+    <ul>
+      <li><a class="link" [routerLink]="['/products']">Products</a></li>
+      <li><a class="link" [routerLink]="['/categories']">Categories</a></li>
+      <li><a class="link" [routerLink]="['/brands']">Brands</a></li>
+    </ul>
   </div>
   <div class="right-section">
     <div class="user-section">
+      <i class="fi fi-rs-shopping-cart" [routerLink]="['/cart']"></i>
       <i class="fi fi-rs-circle-user" (click)="openUserPopup()"></i>
-      @if (isMobileScreen()) {
-      <i class="fi fi-br-menu-burger" (click)="openAdminSidebar()"></i>
-      }
     </div>
   </div>
 </div>
@@ -15,7 +20,7 @@
 @if (isUserPopup) {
 <div class="user-popup">
   <ul (click)="closeUserPopup()">
-    <li [routerLink]="isUserAdmin ? '/admin/profile' : '/profile'">
+    <li [routerLink]="'/profile'">
       <i class="fi fi-rr-user-gear"></i> Profile
     </li>
     <li (click)="logout()"><i class="fi fi-rs-sign-out-alt"></i> Logout</li>

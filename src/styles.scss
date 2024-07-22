@@ -38,6 +38,9 @@ $DesiDukaan-theme: mat.define-theme(
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 @import "assets/styles/toastr.scss";
 @import "@flaticon/flaticon-uicons/css/all/all.css";
+@import "assets/styles/colors.scss";
+@import "assets/styles/table.scss";
+
 * {
   padding: 0;
   margin: 0;
@@ -46,7 +49,7 @@ $DesiDukaan-theme: mat.define-theme(
 
 body {
   font-family: "Ubuntu", sans-serif;
-  // background-color: #f2f0f1;
+  background-color: $body-bg;
 }
 
 .rotating {
@@ -61,29 +64,6 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
-
-table {
-  margin-bottom: 0 !important;
-  thead,
-  tbody {
-    td,
-    th {
-      padding: 15px 15px !important;
-      min-width: 100px;
-      max-width: 300px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .no-item-table {
-      padding: 20px 20px 30px 10px;
-    }
-  }
-}
-
-.table > tbody > tr > td {
-  vertical-align: middle;
 }
 
 .btn {

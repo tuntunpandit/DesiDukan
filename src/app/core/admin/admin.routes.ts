@@ -3,14 +3,14 @@ import { AdminDashboardComponent } from './dashboard/dashboard.component';
 import { ProductsComponent } from './product/products/products.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { CategoriesComponent } from './category/categories/categories.component';
-import { ProfileComponent } from '../common/profile/profile.component';
-import { WrapperComponent } from '../common/wrapper/wrapper.component';
 import { BrandsComponent } from './brand/brands/brands.component';
 import { ColorsComponent } from './color/colors/colors.component';
 import { OrdersComponent } from './order/orders/orders.component';
 import { CouponsComponent } from './coupon/coupons/coupons.component';
 import { ReviewsComponent } from './review/reviews/reviews.component';
 import { OrderDetailsComponent } from './order/order-details/order-details.component';
+import { WrapperComponent } from './layout/wrapper/wrapper.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const ADMIN_ROUTES: Routes = [
   {

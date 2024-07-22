@@ -1,6 +1,6 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, inject, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../../common/authentication/auth.service';
+import { AuthService } from '../../../authentication/auth.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -10,14 +10,30 @@ import { AuthService } from '../../../common/authentication/auth.service';
   styleUrl: './admin-header.component.scss',
 })
 export class AdminHeaderComponent {
-  isAdminPopup: boolean = false;
+  isUserPopup: boolean = false;
   authService = inject(AuthService);
-  @Input() sidebar!: any;
+  isUserAdmin = false;
+  isMobileScreen = input.required<boolean>();
+  onHamburgerClick = output<boolean>();
+  showSidebar = false;
+  constructor() {
+    this.isUserAdmin = this.authService.getUserInfo()?.isAdmin;
+  }
+
   openUserPopup() {
-    this.isAdminPopup = !this.isAdminPopup;
+    this.isUserPopup = !this.isUserPopup;
+  }
+
+  closeUserPopup() {
+    this.isUserPopup = false;
   }
 
   logout() {
     this.authService.logout();
+  }
+
+  openAdminSidebar() {
+    this.showSidebar = !this.showSidebar;
+    this.onHamburgerClick.emit(this.showSidebar);
   }
 }
