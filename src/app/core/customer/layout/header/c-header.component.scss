@@ -4,9 +4,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #ffff;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
-  height: 60px;
+  background-color: white;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); */
+  height: 80px;
   .logo {
     cursor: pointer;
     h2 {
@@ -47,8 +47,11 @@
   }
 }
 
-.right-section > .user-section > i {
-  cursor: pointer;
+.right-section > .user-section {
+  i,
+  .cart-length {
+    cursor: pointer;
+  }
 }
 .user-popup {
   position: absolute;
@@ -86,5 +89,23 @@
 @media screen and (max-width: 720px) {
   .search-box {
     display: none;
+  }
+}
+
+.cart-logo {
+  position: relative;
+  .cart-length {
+    position: absolute;
+    /* display: inline-block; */
+    top: -13px;
+    right: -7px;
+    background: #48a543;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding: -6px;
+    font-size: 13px;
+    color: white;
   }
 }

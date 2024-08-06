@@ -1,0 +1,25 @@
+<div class="product-card">
+  <div class="product-thumbnail">
+    <img
+      [src]="
+        product().images && product().images.length
+          ? product().images[0]
+          : 'assets/default.png'
+      "
+      alt=""
+    />
+  </div>
+  <div class="product-info-wrapper">
+    <div class="info">
+      <h6>Product 1</h6>
+      <h6>$20</h6>
+    </div>
+    <div class="product-desc">
+      <p>This is a good product</p>
+    </div>
+    <div class="star-rating">
+      <div class="stars">****</div>
+      <span>(121)</span>
+    </div>
+  </div>
+</div>

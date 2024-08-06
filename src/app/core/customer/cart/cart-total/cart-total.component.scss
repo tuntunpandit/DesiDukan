@@ -1,0 +1,14 @@
+.cart-price-info {
+  background-color: white;
+  border-radius: 5px;
+  .cart-price-header {
+    padding: 12px;
+    border-bottom: 1px solid lightgray;
+    h6 {
+      margin: 0;
+    }
+  }
+  .cart-price-body {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,10 @@
+<div class="cart-container">
+  <div class="cart-products col-md-8">
+    @for (item of products$ | async; track $index) {
+    <app-cart-products [product]="item" />
+    }
+  </div>
+  <div class="cart-total col-md-4">
+    <app-cart-total [products]="customerService.cartItemsSubject.getValue()" />
+  </div>
+</div>

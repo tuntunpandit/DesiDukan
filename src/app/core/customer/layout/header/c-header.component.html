@@ -2,16 +2,19 @@
   <div class="logo" [routerLink]="'/'">
     <h2><span class="logo-1">Desi</span>Dukan</h2>
   </div>
-  <div class="quick-links">
+  <!-- <div class="quick-links">
     <ul>
       <li><a class="link" [routerLink]="['/products']">Products</a></li>
       <li><a class="link" [routerLink]="['/categories']">Categories</a></li>
       <li><a class="link" [routerLink]="['/brands']">Brands</a></li>
     </ul>
-  </div>
+  </div> -->
   <div class="right-section">
     <div class="user-section">
-      <i class="fi fi-rs-shopping-cart" [routerLink]="['/cart']"></i>
+      <div class="cart-logo" [routerLink]="['/cart']">
+        <div class="cart-length">{{ (products$ | async)?.length }}</div>
+        <i class="fi fi-rs-shopping-cart"></i>
+      </div>
       <i class="fi fi-rs-circle-user" (click)="openUserPopup()"></i>
     </div>
   </div>

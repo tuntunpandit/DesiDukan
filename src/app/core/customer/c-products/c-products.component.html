@@ -2,8 +2,8 @@
   <h4 class="product-title">Popular Products</h4>
   <div class="row row-gap-4">
     @for (product of products(); track product._id) {
-    <div class="col-md-3">
-      <div class="product-card">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="product-card" [routerLink]="['/products', product._id]">
         <div class="product-thumbnail">
           <img
             [src]="
@@ -14,23 +14,30 @@
             alt=""
           />
         </div>
-        <div class="product-wishlist">
+        <div class="product-wishlist" (click)="addToWishlist($event, product)">
           <i class="fi fi-br-heart"></i>
         </div>
         <div class="product-info-wrapper">
           <div class="info">
-            <h6>Product 1</h6>
-            <h6>$20</h6>
+            <h6>{{ product.name }}</h6>
+            <h6>{{ product.price | currency : "USD" }}</h6>
           </div>
           <div class="product-desc">
-            <p>This is a good product</p>
+            <p [title]="product.description">{{ product.description }}</p>
           </div>
           <div class="star-rating">
-            <div class="stars">****</div>
-            <span>(121)</span>
+            <div class="stars">
+              <i class="fi fi-br-star filled-star"></i>
+              <span>({{ product.averageRating }})</span>
+            </div>
           </div>
           <div class="cart-btn">
-            <button class="btn btn-outline-secondary">Add to Cart</button>
+            <button
+              class="btn btn-outline-secondary"
+              (click)="addToCart(product)"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
